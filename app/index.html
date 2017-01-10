@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Made with Thimble</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.1/angular.js"></script>
+  <script src="dist/scripts.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+  <body ng-app = 'inputModule'>
+<!--  <input-box
+             field-id=fieldId
+             label=fieldLabel
+             max-limit=fieldLimit
+             is-required=isFieldRequired
+             place-holder=placeHolder
+             pattern=fieldPattern
+             empty-message=emptyMessage
+             invalid-message=inValidMessage>
+  </input-box>-->
+
+<div class="container-fluid">
+<h1>Form controls</h1>
+<form name="form">
+  <account-number
+                  field-id="accountNumber"
+                  name = "acnum"
+                  label="Account Number"
+                  max-limit="18"
+                  is-required="true"
+                  place-holder="Account Number"
+                  pattern="\d+" // provide the option to there RegEx
+                  empty-message="Please enter Account Number"
+                  invalid-message="Invalid Account Number">
+   <span ng-show="form.acnum.$invalid" class="text-danger">Invalid account number</span>
+      
+  </account-number>
+
+
+  <mobile-number
+                 field-id="mobileNumber"
+                 name = "mobile"
+                 label="Mobile Number"
+                 max-limit="10"
+                 is-required="false"
+                 place-holder="Mobile Number"
+                 pattern="[0-9]{1,7}" // provide the option to there RegEx
+                 empty-message="Please enter Account Number"
+                 invalid-message="Invalid Mobile Number">
+          <span ng-hide="form.mobile.$valid" class="text-danger">Invalid mobile number</span>
+  </mobile-number>
+
+    </form>
+    </div>
+</body>
+</html>
