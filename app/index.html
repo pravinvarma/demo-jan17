@@ -11,18 +11,7 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
   <body ng-app = 'inputModule'>
-<!--  <input-box
-             field-id=fieldId
-             label=fieldLabel
-             max-limit=fieldLimit
-             is-required=isFieldRequired
-             place-holder=placeHolder
-             pattern=fieldPattern
-             empty-message=emptyMessage
-             invalid-message=inValidMessage>
-  </input-box>-->
-
-<div class="container-fluid">
+<div class="container-fluid" ng-controller = 'inputComponentController as inputComponent'>
 <h1>Form controls</h1>
 <form name="form">
   <account-number
@@ -34,11 +23,9 @@
                   place-holder="Account Number"
                   pattern="\d+" // provide the option to there RegEx
                   empty-message="Please enter Account Number"
-                  invalid-message="Invalid Account Number">
-   <span ng-show="form.acnum.$invalid" class="text-danger">Invalid account number</span>
-      
+                  invalid-message="Invalid Account Number">      
+   <span ng-show="form.acnum.$invalid && !form.acnum.$pristine" class="text-danger">{{invalidMessageAccount}}</span>      
   </account-number>
-
 
   <mobile-number
                  field-id="mobileNumber"
@@ -47,13 +34,12 @@
                  max-limit="10"
                  is-required="false"
                  place-holder="Mobile Number"
-                 pattern="[0-9]{1,7}" // provide the option to there RegEx
+                 pattern="[0-9]{1,10}" 
                  empty-message="Please enter Account Number"
                  invalid-message="Invalid Mobile Number">
-          <span ng-hide="form.mobile.$valid" class="text-danger">Invalid mobile number</span>
+  <span ng-show="form.mobile.$invalid && !form.mobile.$pristine" class="text-danger">{{invalidMessageMobile}}</span>
   </mobile-number>
-
-    </form>
-    </div>
+</form>
+</div>
 </body>
 </html>
